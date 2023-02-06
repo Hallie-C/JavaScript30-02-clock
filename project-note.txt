@@ -1,0 +1,28 @@
+CSS + JS Clock
+
+CSS Ideas:
+- Apply a rotate to each of the hands depending on what time it currently is.
+(the problem is that it's gonna rotate itself on the exact middle of the element
+and we want to rotate it on the very right-hand side)
+ -> Changing the transform-origin to 100% along the x-axis, which is where it's going to do the rotation off of
+- using rotate to move all the hands to point at 12 default.
+- add transition to clock hand so that it has smoother movement.
+ -> add a transition-timing-function to choose a suitable movement from your preference
+ (If you click on the little cubic bezier in the inspector, you can actually create some pretty fun animation
+ by just jacking it right up).
+ 
+ JavaScript part:
+ How do you run something every second?
+ - You give yourself a setInterval and that will be running every second 1000ms
+		setInterval(<function>, <period>, <arguments...>);
+		
+ How to get a current time?
+ - Using new Date() built in function from JavaScript and .getSeconds()
+ 
+ Now to move the second clock hand, we need to calculate the proper secondDegrees compared to the origin place (12), 
+ so that when it is 100% it will be = 360degree
+  -> Since there is 60-second to rotate over a 360degree clock face -> each second degree = 360 / 60
+  -> And since we're gonna rotate it from the origin place, the each secondDegrees = seconds * (360 / 60) + 90deg
+  
+ To rotate the second hand, you need to select it and changing its transform attribute from the style withe correspond secondDegrees
+  
